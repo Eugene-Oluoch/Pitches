@@ -6,7 +6,7 @@ class Config:
     
     
 class ProdConfig(Config):
-    SQLALCHEMY_DATABASE_URI =os.environ.get("DATABASE_URL").replace('postgres://', 'postgresql://')
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://crabs:Greenland@localhost/ip3'.replace('postgres://', 'postgresql://')
     
     
 
