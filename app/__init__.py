@@ -12,12 +12,9 @@ login_manager = LoginManager()
 login_manager.login_view = 'users.login'
 
 
-engine = create_engine('postgresql://crabs:Greenland@localhost/pitches')
-
 def create_app(config_name):
     app = Flask(__name__)
     app.config.from_object(config_options[config_name])
-    app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("DATABASE_URL").replace('postgres://', 'posgresql://')
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"]=False
     db.init_app(app)
     bcrypt.init_app(app)
