@@ -1,16 +1,18 @@
 import os
 
 class Config:
-    SECRET_KEY = '1c20a412ab0f6fef538768f3174b15e2'
+    SECRET_KEY = os.environ.get('SECRET_KEY')
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
     SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://crabs:Greenland@localhost/ip3'
     
     
 class ProdConfig(Config):
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://crabs:Greenland@localhost/ip3'.replace('postgres://', 'postgresql://')
+    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL')
     
     
 
 class DevConfig(Config):
+    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL')
     DEBUG = True
     
 config_options = {
