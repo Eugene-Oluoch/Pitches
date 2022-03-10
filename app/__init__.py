@@ -15,8 +15,8 @@ login_manager.login_view = 'users.login'
 def create_app(config_name):
     app = Flask(__name__)
     app.config.from_object(config_options[config_name])
-    app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL')
-    app.config["SQLALCHEMY_TRACK_MODIFICATIONS"]=False
+    # app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL')
+    # app.config["SQLALCHEMY_TRACK_MODIFICATIONS"]=False
     db.init_app(app)
     bcrypt.init_app(app)
     login_manager.init_app(app)
